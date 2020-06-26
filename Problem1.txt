@@ -1,0 +1,102 @@
+package Upload;
+
+
+
+class Node{
+	int data;
+	Node left=null;
+	Node right=null;
+	Node(int data)
+	{
+		this.data=data;
+		this.left=null;
+		this.right=null;
+	}
+	public String toString()
+	{
+		return "The data is : "+data;
+	}
+}
+
+
+public class PrintLeaves {
+	
+	Node root;
+	public void addNode(int data)
+	{
+		Node node=new Node(data);
+		if(root == null)
+		{
+			root=node;
+		}
+		else
+		{
+			Node temp=root;
+			Node parent;
+			while(true)
+			{
+				parent=temp;
+				if(temp.data>data)
+				{
+					temp=temp.left;
+					if(temp==null)
+					{
+						parent.left=node;
+						return;
+					}
+				}
+				else {
+					temp=temp.right;
+					if(temp==null)
+					{
+						parent.right=node;
+						return;
+					}
+				}
+			}
+		}
+		
+	}
+	
+	public void printleaves(Node node)
+	{
+		if(node==null)
+		{
+			return;
+		}
+		if(node.left==null && node.right==null)
+		{
+				System.out.print(node.data+" ");
+				return;
+		}
+		if(node.right!=null)
+		{
+				printleaves(node.right);
+		}
+		
+		if(node.left!=null)
+		{
+				printleaves(node.left);
+			//	System.out.println("herre data is : "+node.data);
+		}
+	}
+	
+	public static void main(String args[])
+	{
+		PrintLeaves obj= new PrintLeaves();
+		Node root=null;
+	
+		obj.addNode(8);
+		obj.addNode(3);
+		obj.addNode(1);
+		obj.addNode(6);
+		obj.addNode(4);
+		obj.addNode(7);
+		obj.addNode(10);
+		obj.addNode(14);
+		obj.addNode(13);
+		System.out.println(obj.root.data);
+		obj.printleaves(obj.root);
+	}
+}
+

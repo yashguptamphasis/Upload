@@ -1,0 +1,22 @@
+
+	public void Bfs(Node root) {
+	      LinkedList<Node> list= new LinkedList<Node>();
+	      
+	      if(root==null)
+	      {
+	    	  return;
+	      }
+	      
+	      list.add(root);
+			
+	      while(!list.isEmpty())
+	      {
+	    	  Node temp=list.poll();
+	    	  if(temp.right!=null)
+	    		  list.add(temp.right);
+	    	  
+	    	  if(temp.left!=null)
+	    		  list.add(temp.left);
+	      }
+	    }
+	
